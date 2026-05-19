@@ -11,8 +11,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         return super().do_GET()
 
     def log_message(self, format, *args):
-        pass  # suppress logs
+        pass
 
-with socketserver.TCPServer(("", PORT), Handler) as httpd:
-    print(f"Marnce Landing Page running on port {PORT}")
-    httpd.serve_forever()
+httpd = socketserver.TCPServer(("0.0.0.0", PORT), Handler)
+print(f"Server running on port {PORT}")
+httpd.serve_forever()
