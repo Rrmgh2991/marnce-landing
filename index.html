@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Marnce — منصة ذكاء السوق. تقارير يومية مؤتمتة عن أفضل المنتجات في السوق السعودي والعالمي.">
+<title>Marnce — Market Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Alexandria:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #14335d;
+  --navy-dark: #0d2647;
+  --navy-mid: #1e3d6b;
+  --blue: #285793;
+  --blue-light: #3a70b5;
+  --emerald: #00C48C;
+  --emerald-dark: #00a076;
+  --white: #ffffff;
+  --off-white: #f8f9fc;
+  --gray-light: #f0f4fb;
+  --gray: #e2e6ef;
+  --gray-mid: #b0bcd4;
+  --text-muted: #6e8fb0;
+  --text-body: #3d4f6b;
+  --font-en: 'Montserrat', sans-serif;
+  --font-ar: 'Alexandria', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-ar);
+  background: var(--white);
+  color: var(--text-body);
+  overflow-x: hidden;
+  direction: rtl;
+}
+
+/* ===== NAVBAR ===== */
+.nav {
+  position: fixed;
+  top: 0; right: 0; left: 0;
+  z-index: 100;
+  background: rgba(13, 38, 71, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(40, 87, 147, 0.3);
+  padding: 0 40px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.nav-logo-icon {
+  width: 34px; height: 34px;
+  background: var(--emerald);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.nav-logo-icon svg { width: 20px; height: 20px; }
+
+.nav-logo-text {
+  font-family: var(--font-en);
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--white);
+  letter-spacing: 2px;
+}
+
+.nav-logo-sub {
+  font-family: var(--font-en);
+  font-size: 9px;
+  color: var(--text-muted);
+  letter-spacing: 3px;
+  line-height: 1;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 400;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--white); }
+
+.nav-cta {
+  background: var(--emerald);
+  color: var(--white);
+  border: none;
+  padding: 9px 22px;
+  border-radius: 8px;
+  font-family: var(--font-ar);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.nav-cta:hover {
+  background: var(--emerald-dark);
+  transform: translateY(-1px);
+}
+
+/* ===== HERO ===== */
+.hero {
+  background: var(--navy-dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 40px 80px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.hero-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(40,87,147,0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(40,87,147,0.15) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(40, 87, 147, 0.3);
+  border: 1px solid rgba(40, 87, 147, 0.5);
+  color: #aac4e8;
+  font-size: 12px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 28px;
+  letter-spacing: 0.5px;
+}
+
+.hero-badge-dot {
+  width: 7px; height: 7px;
+  background: var(--emerald);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.8); }
+}
+
+.hero-title {
+  font-family: var(--font-ar);
+  font-size: clamp(32px, 5vw, 54px);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.25;
+  margin-bottom: 20px;
+  max-width: 780px;
+}
+
+.hero-title .accent { color: var(--emerald); }
+
+.hero-sub {
+  color: #8aabcc;
+  font-size: clamp(14px, 2vw, 17px);
+  line-height: 1.8;
+  max-width: 580px;
+  margin: 0 auto 40px;
+  font-weight: 300;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 72px;
+}
+
+.btn-primary {
+  background: var(--emerald);
+  color: var(--white);
+  border: none;
+  padding: 15px 36px;
+  border-radius: 10px;
+  font-family: var(--font-ar);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background: var(--emerald-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 196, 140, 0.3);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  padding: 15px 36px;
+  border-radius: 10px;
+  font-family: var(--font-ar);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-outline:hover {
+  border-color: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.06);
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid rgba(40, 87, 147, 0.4);
+  padding-top: 40px;
+  width: 100%;
+  max-width: 600px;
+  gap: 0;
+}
+
+.hero-stat {
+  flex: 1;
+  text-align: center;
+  padding: 0 20px;
+  border-left: 1px solid rgba(40, 87, 147, 0.4);
+}
+.hero-stat:last-child { border-left: none; }
+
+.hero-stat-num {
+  font-family: var(--font-en);
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--emerald);
+  line-height: 1;
+}
+
+.hero-stat-label {
+  color: var(--text-muted);
+  font-size: 11px;
+  margin-top: 5px;
+  font-weight: 300;
+}
+
+/* ===== TRUST BAR ===== */
+.trust-bar {
+  background: var(--white);
+  border-bottom: 1px solid var(--gray);
+  padding: 14px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.trust-label {
+  color: var(--gray-mid);
+  font-size: 11px;
+  font-family: var(--font-en);
+  letter-spacing: 1px;
+}
+
+.trust-divider {
+  width: 1px;
+  height: 16px;
+  background: var(--gray);
+}
+
+.trust-sources {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.trust-source {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #9aaccc;
+  font-size: 11px;
+  font-family: var(--font-en);
+  font-weight: 600;
+}
+
+.trust-dot {
+  width: 5px; height: 5px;
+  background: var(--emerald);
+  border-radius: 50%;
+}
+
+/* ===== SECTION BASE ===== */
+.section {
+  padding: 88px 40px;
+}
+
+.section-tag {
+  display: inline-block;
+  background: var(--gray-light);
+  color: var(--blue);
+  font-size: 10px;
+  font-family: var(--font-en);
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.section-title {
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.section-desc {
+  color: #7a8fa8;
+  font-size: 15px;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ===== HOW IT WORKS ===== */
+.how-bg { background: var(--white); }
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.step-card {
+  background: var(--off-white);
+  border: 1px solid var(--gray);
+  border-radius: 16px;
+  padding: 28px 24px;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.step-card:hover {
+  border-color: var(--blue);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(20, 51, 93, 0.08);
+}
+
+.step-num {
+  width: 40px; height: 40px;
+  background: var(--navy);
+  color: var(--white);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-en);
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.step-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.step-desc {
+  font-size: 12px;
+  color: #7a8fa8;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.step-connector {
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background: var(--white);
+  border: 1.5px solid var(--gray);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gray-mid);
+  font-size: 12px;
+  z-index: 1;
+}
+
+/* ===== SAMPLE REPORT ===== */
+.sample-bg { background: var(--gray-light); }
+
+.sample-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.sample-text h2 {
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 14px;
+  line-height: 1.3;
+}
+
+.sample-text p {
+  color: #7a8fa8;
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 24px;
+  font-weight: 300;
+}
+
+.feature-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.feature-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-body);
+}
+
+.check-icon {
+  width: 20px; height: 20px;
+  background: var(--emerald);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: white;
+  font-size: 11px;
+}
+
+/* Report Preview */
+.report-preview {
+  background: var(--white);
+  border: 1px solid var(--gray);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(20, 51, 93, 0.12);
+}
+
+.report-header {
+  background: var(--navy);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.report-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.report-logo-sm {
+  width: 26px; height: 26px;
+  background: var(--emerald);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-en);
+  font-size: 11px;
+  font-weight: 800;
+  color: white;
+}
+
+.report-title-sm {
+  color: var(--white);
+  font-family: var(--font-en);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.report-date-sm {
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+.report-col-header {
+  display: grid;
+  grid-template-columns: 24px 1fr 90px 30px 68px;
+  gap: 6px;
+  padding: 9px 16px;
+  background: #f5f7fb;
+  border-bottom: 1px solid var(--gray);
+  font-size: 9px;
+  font-family: var(--font-en);
+  font-weight: 700;
+  color: var(--gray-mid);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.report-row {
+  display: grid;
+  grid-template-columns: 24px 1fr 90px 30px 68px;
+  gap: 6px;
+  padding: 11px 16px;
+  border-bottom: 1px solid #f0f2f8;
+  align-items: center;
+  transition: background 0.15s;
+}
+
+.report-row:hover { background: #fafbfe; }
+
+.report-rank {
+  font-family: var(--font-en);
+  font-size: 11px;
+  color: var(--gray-mid);
+  text-align: center;
+  font-weight: 600;
+}
+
+.report-rank.top { color: var(--emerald); font-weight: 800; }
+
+.report-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.index-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.index-bar-bg {
+  flex: 1;
+  height: 5px;
+  background: #eef1f8;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.index-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: var(--emerald);
+  transition: width 0.8s ease;
+}
+
+.index-val {
+  font-family: var(--font-en);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--navy);
+  min-width: 24px;
+  text-align: left;
+}
+
+.badge {
+  font-size: 9px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-family: var(--font-en);
+  text-align: center;
+}
+
+.badge-trend { background: #e0f7ef; color: #0a7a57; }
+.badge-fad   { background: #fde8e8; color: #a32d2d; }
+.badge-opp   { background: #fdf4e0; color: #8a5c0a; }
+.badge-glob  { background: #e8f0fb; color: #185fa5; }
+
+.report-blur {
+  position: relative;
+}
+
+.report-blur-row {
+  display: grid;
+  grid-template-columns: 24px 1fr 90px 30px 68px;
+  gap: 6px;
+  padding: 11px 16px;
+  border-bottom: 1px solid #f0f2f8;
+  align-items: center;
+  filter: blur(5px);
+  user-select: none;
+  pointer-events: none;
+}
+
+.report-blur-overlay {
+  text-align: center;
+  padding: 16px;
+  background: linear-gradient(to bottom, rgba(248,249,252,0) 0%, rgba(248,249,252,0.97) 40%);
+  position: relative;
+}
+
+.report-blur-overlay span {
+  display: inline-block;
+  background: var(--navy);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 8px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.report-blur-overlay span:hover { background: var(--blue); }
+
+/* ===== PRICING ===== */
+.pricing-bg { background: var(--white); }
+
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.plan-card {
+  background: var(--off-white);
+  border: 1px solid var(--gray);
+  border-radius: 20px;
+  padding: 32px 28px;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.plan-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(20, 51, 93, 0.1);
+}
+
+.plan-card.featured {
+  background: var(--white);
+  border: 2px solid var(--blue);
+  box-shadow: 0 8px 32px rgba(20, 51, 93, 0.12);
+}
+
+.plan-popular-badge {
+  position: absolute;
+  top: -14px;
+  right: 50%;
+  transform: translateX(50%);
+  background: var(--navy);
+  color: var(--white);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 16px;
+  border-radius: 20px;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+}
+
+.plan-tier {
+  font-family: var(--font-en);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gray-mid);
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.plan-price {
+  font-family: var(--font-en);
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--navy);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.plan-price-unit {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--gray-mid);
+}
+
+.plan-desc {
+  color: #9aaccc;
+  font-size: 12px;
+  margin: 8px 0 24px;
+  font-weight: 300;
+}
+
+.plan-divider {
+  height: 1px;
+  background: var(--gray);
+  margin-bottom: 20px;
+}
+
+.plan-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.plan-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-body);
+  line-height: 1.5;
+}
+
+.plan-features .check-icon {
+  width: 16px; height: 16px;
+  font-size: 9px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.plan-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  font-family: var(--font-ar);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  border: 1.5px solid transparent;
+}
+
+.plan-btn-outline {
+  background: transparent;
+  border-color: var(--gray);
+  color: var(--navy);
+}
+.plan-btn-outline:hover { border-color: var(--navy); }
+
+.plan-btn-navy {
+  background: var(--navy);
+  color: var(--white);
+}
+.plan-btn-navy:hover { background: var(--navy-mid); }
+
+.plan-btn-emerald {
+  background: var(--emerald);
+  color: var(--white);
+}
+.plan-btn-emerald:hover {
+  background: var(--emerald-dark);
+  box-shadow: 0 6px 20px rgba(0, 196, 140, 0.3);
+}
+
+/* ===== INDEX EXPLAINER ===== */
+.index-bg {
+  background: var(--navy-dark);
+}
+
+.index-bg .section-tag {
+  background: rgba(40, 87, 147, 0.3);
+  color: #aac4e8;
+  border: 1px solid rgba(40, 87, 147, 0.4);
+}
+
+.index-bg .section-title { color: var(--white); }
+.index-bg .section-desc  { color: var(--text-muted); }
+
+.formula-box {
+  background: rgba(13, 38, 71, 0.8);
+  border: 1px solid rgba(40, 87, 147, 0.4);
+  border-radius: 14px;
+  padding: 24px 32px;
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 40px;
+}
+
+.formula-text {
+  font-family: var(--font-en);
+  font-size: clamp(11px, 1.5vw, 14px);
+  color: #8aabcc;
+  line-height: 2;
+  word-break: break-all;
+}
+
+.formula-highlight {
+  color: var(--emerald);
+  font-weight: 800;
+  font-size: clamp(12px, 1.6vw, 15px);
+  display: block;
+  margin-top: 8px;
+}
+
+.components-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.comp-card {
+  background: rgba(13, 38, 71, 0.6);
+  border: 1px solid rgba(40, 87, 147, 0.3);
+  border-radius: 12px;
+  padding: 20px 16px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.comp-card:hover {
+  border-color: var(--emerald);
+  transform: translateY(-3px);
+}
+
+.comp-letter {
+  font-family: var(--font-en);
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--emerald);
+  line-height: 1;
+}
+
+.comp-name {
+  color: var(--text-muted);
+  font-family: var(--font-en);
+  font-size: 10px;
+  margin: 6px 0 4px;
+  letter-spacing: 0.5px;
+}
+
+.comp-weight {
+  font-family: var(--font-en);
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(40, 87, 147, 0.8);
+}
+
+/* ===== CLASSIFICATIONS ===== */
+.class-bg { background: var(--off-white); }
+
+.class-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.class-card {
+  background: var(--white);
+  border: 1px solid var(--gray);
+  border-radius: 12px;
+  padding: 18px 14px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.class-card:hover {
+  border-color: var(--blue);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(20,51,93,0.08);
+}
+
+.class-emoji { font-size: 22px; margin-bottom: 8px; display: block; }
+
+.class-name {
+  font-family: var(--font-en);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+
+.class-desc {
+  font-size: 10px;
+  color: #9aaccc;
+  line-height: 1.5;
+}
+
+.class-range {
+  font-family: var(--font-en);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--emerald);
+  margin-top: 6px;
+}
+
+/* ===== TESTIMONIALS ===== */
+.testi-bg { background: var(--white); }
+
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.testi-card {
+  background: var(--off-white);
+  border: 1px solid var(--gray);
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.3s;
+}
+
+.testi-card:hover {
+  border-color: var(--blue);
+  transform: translateY(-3px);
+}
+
+.testi-stars {
+  color: #f5a623;
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+}
+
+.testi-text {
+  color: var(--text-body);
+  font-size: 13px;
+  line-height: 1.8;
+  margin-bottom: 18px;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.testi-avatar {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--gray-light);
+  border: 2px solid var(--gray);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--navy);
+  flex-shrink: 0;
+}
+
+.testi-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.testi-role {
+  font-size: 11px;
+  color: #9aaccc;
+  margin-top: 1px;
+}
+
+/* ===== FAQ ===== */
+.faq-bg { background: var(--gray-light); }
+
+.faq-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background: var(--white);
+  border: 1px solid var(--gray);
+  border-radius: 12px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+
+.faq-item:hover { border-color: var(--blue); }
+
+.faq-q {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+  cursor: pointer;
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 600;
+  user-select: none;
+}
+
+.faq-icon {
+  width: 24px; height: 24px;
+  background: var(--gray-light);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--blue);
+  font-size: 16px;
+  transition: all 0.3s;
+  flex-shrink: 0;
+}
+
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+  background: var(--navy);
+  color: white;
+}
+
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.2s;
+  color: #7a8fa8;
+  font-size: 13px;
+  line-height: 1.8;
+  padding: 0 20px;
+  font-weight: 300;
+}
+
+.faq-item.open .faq-a {
+  max-height: 200px;
+  padding: 0 20px 18px;
+}
+
+/* ===== FINAL CTA ===== */
+.cta-final {
+  background: var(--navy-dark);
+  padding: 100px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-final-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(40,87,147,0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(40,87,147,0.12) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 100%);
+}
+
+.cta-final h2 {
+  font-size: clamp(26px, 4vw, 44px);
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.cta-final p {
+  color: var(--text-muted);
+  font-size: 16px;
+  margin-bottom: 36px;
+  position: relative;
+  font-weight: 300;
+}
+
+.cta-final .hero-btns { position: relative; }
+
+/* ===== FOOTER ===== */
+.footer {
+  background: #070f1c;
+  padding: 56px 40px 28px;
+  border-top: 1px solid rgba(40, 87, 147, 0.2);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  max-width: 1100px;
+  margin: 0 auto 40px;
+}
+
+.footer-brand-name {
+  font-family: var(--font-en);
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+}
+
+.footer-brand-sub {
+  font-family: var(--font-en);
+  font-size: 9px;
+  color: var(--text-muted);
+  letter-spacing: 3px;
+  margin-bottom: 14px;
+}
+
+.footer-brand-desc {
+  color: #4a6480;
+  font-size: 12px;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.footer-col h4 {
+  color: #5a7a9a;
+  font-size: 10px;
+  font-family: var(--font-en);
+  letter-spacing: 2px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.footer-col a {
+  display: block;
+  color: #3a5a78;
+  font-size: 12px;
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: color 0.2s;
+  font-weight: 300;
+}
+
+.footer-col a:hover { color: var(--white); }
+
+.footer-bottom {
+  border-top: 1px solid rgba(40, 87, 147, 0.15);
+  padding-top: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-copy {
+  color: #2a4060;
+  font-size: 11px;
+  font-family: var(--font-en);
+}
+
+.footer-socials {
+  display: flex;
+  gap: 8px;
+}
+
+.social-icon {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  border: 1px solid rgba(40, 87, 147, 0.3);
+  display: flex; align-items: center; justify-content: center;
+  color: #3a5a78;
+  font-size: 12px;
+  font-family: var(--font-en);
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.social-icon:hover {
+  border-color: var(--blue);
+  color: var(--white);
+  background: rgba(40, 87, 147, 0.2);
+}
+
+/* ===== FADE IN ANIMATION ===== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .steps-grid,
+  .components-grid,
+  .class-grid { grid-template-columns: repeat(2, 1fr); }
+  .plans-grid,
+  .testi-grid,
+  .sample-inner { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .nav-links { display: none; }
+}
+
+@media (max-width: 600px) {
+  .section { padding: 60px 20px; }
+  .nav { padding: 0 20px; }
+  .hero { padding: 100px 20px 60px; }
+  .hero-stats { gap: 0; }
+  .hero-stat { padding: 0 12px; }
+  .steps-grid,
+  .components-grid,
+  .class-grid,
+  .plans-grid,
+  .testi-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  .trust-bar { gap: 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="nav" id="navbar">
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
+        <rect x="3" y="3" width="7" height="7" rx="1"/>
+        <circle cx="19" cy="5" r="2"/>
+        <path d="M10 6h4M19 7v4M10 18h9M3 14h4v7H3z"/>
+      </svg>
+    </div>
+    <div>
+      <div class="nav-logo-text">MARNCE</div>
+      <div class="nav-logo-sub">MARKET INTELLIGENCE</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#how">كيف يعمل</a></li>
+    <li><a href="#sample">التقرير</a></li>
+    <li><a href="#pricing">الأسعار</a></li>
+    <li><a href="#faq">الأسئلة</a></li>
+  </ul>
+  <a href="https://store.marnce.com" class="nav-cta">ابدأ مجاناً</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-badge">
+    <div class="hero-badge-dot"></div>
+    Market Intelligence · السوق السعودي والعالمي
+  </div>
+  <h1 class="hero-title">
+    اكتشف المنتجات الرابحة<br>
+    قبل أن يكتشفها <span class="accent">المنافسون</span>
+  </h1>
+  <p class="hero-sub">
+    تقارير يومية مؤتمتة بالكامل — محللة من 15 مصدر عالمي وسعودي،
+    مع نظام <strong>Marnce Index™</strong> الخاص لتصنيف كل منتج بدقة علمية
+  </p>
+  <div class="hero-btns">
+    <a href="https://store.marnce.com" class="btn-primary">ابدأ تجربتك المجانية</a>
+    <a href="#sample" class="btn-outline">شاهد نموذج تقرير</a>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">15+</div>
+      <div class="hero-stat-label">مصدر بيانات</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">100</div>
+      <div class="hero-stat-label">منتج يومياً</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">25</div>
+      <div class="hero-stat-label">فئة منتج</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">10</div>
+      <div class="hero-stat-label">نوع تصنيف</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <span class="trust-label">DATA SOURCES</span>
+  <div class="trust-divider"></div>
+  <div class="trust-sources">
+    <div class="trust-source"><div class="trust-dot"></div>Google Trends</div>
+    <div class="trust-source"><div class="trust-dot"></div>Amazon.sa</div>
+    <div class="trust-source"><div class="trust-dot"></div>TikTok CC</div>
+    <div class="trust-source"><div class="trust-dot"></div>Noon</div>
+    <div class="trust-source"><div class="trust-dot"></div>Exploding Topics</div>
+    <div class="trust-source"><div class="trust-dot"></div>Helium 10</div>
+    <div class="trust-source"><div class="trust-dot"></div>Pinterest</div>
+    <div class="trust-source" style="color:#b0bcd4">+ 8 مصادر أخرى</div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="section how-bg" id="how">
+  <div class="section-header fade-in">
+    <div class="section-tag">HOW IT WORKS</div>
+    <h2 class="section-title">من البيانات الخام إلى قرار تجاري واضح</h2>
+    <p class="section-desc">أربع خطوات مؤتمتة بالكامل — كل يوم الساعة 6 صباحاً</p>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card fade-in">
+      <div class="step-num">01</div>
+      <div class="step-title">جمع البيانات</div>
+      <div class="step-desc">15 مصدر عالمي وسعودي يُسحب منها بيانات المنتجات تلقائياً كل يوم بدون تدخل بشري</div>
+    </div>
+    <div class="step-card fade-in" style="transition-delay:0.1s">
+      <div class="step-connector">←</div>
+      <div class="step-num">02</div>
+      <div class="step-title">Marnce Index™</div>
+      <div class="step-desc">كل منتج يحصل على درجة من 0 إلى 100 بناءً على 8 مؤشرات علمية موزونة</div>
+    </div>
+    <div class="step-card fade-in" style="transition-delay:0.2s">
+      <div class="step-connector">←</div>
+      <div class="step-num">03</div>
+      <div class="step-title">التصنيف الذكي</div>
+      <div class="step-desc">10 تصنيفات تحدد طبيعة كل منتج: Trend / Fad / Opportunity / Gap وغيرها</div>
+    </div>
+    <div class="step-card fade-in" style="transition-delay:0.3s">
+      <div class="step-connector">←</div>
+      <div class="step-num">04</div>
+      <div class="step-title">التقرير في واتساب</div>
+      <div class="step-desc">تستلم تقريرك كـ PDF على واتساب وإيميلك قبل بداية يوم العمل مباشرة</div>
+    </div>
+  </div>
+</section>
+
+<!-- SAMPLE REPORT -->
+<section class="section sample-bg" id="sample">
+  <div class="section-header fade-in">
+    <div class="section-tag">SAMPLE REPORT</div>
+    <h2 class="section-title">ماذا يبدو تقرير Marnce؟</h2>
+  </div>
+  <div class="sample-inner">
+    <div class="sample-text fade-in">
+      <h2>100 منتج محلل — كل يوم قبل الساعة 6 صباحاً</h2>
+      <p>كل تقرير يحتوي على أفضل المنتجات مرتبة حسب Marnce Index™ من الأعلى للأدنى، مع تصنيف ذكي ورابط مباشر لكل منتج على Amazon.sa</p>
+      <ul class="feature-list">
+        <li><div class="check-icon">✓</div> Marnce Index™ لكل منتج (0-100)</li>
+        <li><div class="check-icon">✓</div> تصنيف ذكي: Trend / Fad / Opportunity / Gap</li>
+        <li><div class="check-icon">✓</div> فئة المنتج من 25 فئة عربية</li>
+        <li><div class="check-icon">✓</div> رابط مباشر للمنتج على Amazon.sa</li>
+        <li><div class="check-icon">✓</div> إشارات تحذيرية + مقارنة بالأمس</li>
+        <li><div class="check-icon">✓</div> يصلك على واتساب وإيميلك تلقائياً</div></li>
+      </ul>
+      <a href="https://store.marnce.com" class="btn-primary">اشترك واستلم تقريرك الأول</a>
+    </div>
+    <div class="report-preview fade-in" style="transition-delay:0.15s">
+      <div class="report-header">
+        <div class="report-header-left">
+          <div class="report-logo-sm">M</div>
+          <div>
+            <div class="report-title-sm">MARNCE DAILY REPORT</div>
+            <div class="report-date-sm">اليوم · أعلى 100 منتج</div>
+          </div>
+        </div>
+        <div style="background:#00C48C;color:#fff;font-size:9px;padding:3px 10px;border-radius:6px;font-family:var(--font-en);font-weight:700">LIVE</div>
+      </div>
+      <div class="report-col-header">
+        <span>#</span>
+        <span>المنتج</span>
+        <span>Index</span>
+        <span></span>
+        <span>نوع</span>
+      </div>
+      <div class="report-row">
+        <span class="report-rank top">1</span>
+        <span class="report-name">سماعات لاسلكية</span>
+        <div class="index-wrap">
+          <div class="index-bar-bg"><div class="index-bar-fill" style="width:92%"></div></div>
+          <span class="index-val">92</span>
+        </div>
+        <span></span>
+        <span class="badge badge-trend">Trend</span>
+      </div>
+      <div class="report-row">
+        <span class="report-rank">2</span>
+        <span class="report-name">كريم واقي الشمس SPF</span>
+        <div class="index-wrap">
+          <div class="index-bar-bg"><div class="index-bar-fill" style="width:85%;background:#285793"></div></div>
+          <span class="index-val">85</span>
+        </div>
+        <span></span>
+        <span class="badge badge-fad">Fad</span>
+      </div>
+      <div class="report-row">
+        <span class="report-rank">3</span>
+        <span class="report-name">حقيبة لابتوب مقاومة</span>
+        <div class="index-wrap">
+          <div class="index-bar-bg"><div class="index-bar-fill" style="width:78%;background:#f5a623"></div></div>
+          <span class="index-val">78</span>
+        </div>
+        <span></span>
+        <span class="badge badge-opp">Opp</span>
+      </div>
+      <div class="report-row">
+        <span class="report-rank">4</span>
+        <span class="report-name">مرطب هيالورونيك</span>
+        <div class="index-wrap">
+          <div class="index-bar-bg"><div class="index-bar-fill" style="width:71%;background:#185fa5"></div></div>
+          <span class="index-val">71</span>
+        </div>
+        <span></span>
+        <span class="badge badge-glob">Global</span>
+      </div>
+      <div class="report-blur">
+        <div class="report-blur-row">
+          <span class="report-rank">5</span>
+          <span class="report-name">منتج مخفي</span>
+          <div class="index-wrap"><div class="index-bar-bg"><div class="index-bar-fill" style="width:68%"></div></div><span class="index-val">68</span></div>
+          <span></span><span class="badge badge-trend">—</span>
+        </div>
+        <div class="report-blur-row">
+          <span class="report-rank">6</span>
+          <span class="report-name">منتج مخفي</span>
+          <div class="index-wrap"><div class="index-bar-bg"><div class="index-bar-fill" style="width:64%"></div></div><span class="index-val">64</span></div>
+          <span></span><span class="badge badge-opp">—</span>
+        </div>
+        <div class="report-blur-overlay">
+          <span onclick="window.location='https://store.marnce.com'">🔒 اشترك للوصول لـ 100 منتج كامل</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section pricing-bg" id="pricing">
+  <div class="section-header fade-in">
+    <div class="section-tag">PRICING</div>
+    <h2 class="section-title">اختر الخطة المناسبة لك</h2>
+    <p class="section-desc">ابدأ مجاناً — لا يوجد بطاقة ائتمان مطلوبة</p>
+  </div>
+  <div class="plans-grid">
+    <div class="plan-card fade-in">
+      <div class="plan-tier">FREE</div>
+      <div class="plan-price">0 <span class="plan-price-unit">ر.س</span></div>
+      <div class="plan-desc">للتعرف على المنصة</div>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li><div class="check-icon" style="background:#b0bcd4">✓</div> أول 25 منتج يومياً</li>
+        <li><div class="check-icon" style="background:#b0bcd4">✓</div> Marnce Index™ فقط</li>
+        <li><div class="check-icon" style="background:#b0bcd4">✓</div> بدون SQHA™</li>
+      </ul>
+      <a href="https://store.marnce.com/free" class="plan-btn plan-btn-outline">ابدأ مجاناً</a>
+    </div>
+    <div class="plan-card featured fade-in" style="transition-delay:0.1s">
+      <div class="plan-popular-badge">الأكثر طلباً</div>
+      <div class="plan-tier">CUSTOM</div>
+      <div class="plan-price">— <span class="plan-price-unit">ر.س / شهر</span></div>
+      <div class="plan-desc">للباحثين والتجار</div>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li><div class="check-icon">✓</div> 100 منتج يومياً كاملاً</li>
+        <li><div class="check-icon">✓</div> Marnce Index™ كامل بـ 8 مؤشرات</li>
+        <li><div class="check-icon">✓</div> 15 عمود في التقرير</li>
+        <li><div class="check-icon">✓</div> تقرير أسبوعي شامل</li>
+        <li><div class="check-icon">✓</div> واتساب + إيميل</li>
+      </ul>
+      <a href="https://store.marnce.com/custom" class="plan-btn plan-btn-navy">اشترك الآن</a>
+    </div>
+    <div class="plan-card fade-in" style="transition-delay:0.2s">
+      <div class="plan-tier">PREMIUM</div>
+      <div class="plan-price">— <span class="plan-price-unit">ر.س / شهر</span></div>
+      <div class="plan-desc">للمحترفين والشركات</div>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li><div class="check-icon" style="background:#285793">✓</div> كل مميزات Custom</li>
+        <li><div class="check-icon" style="background:#285793">✓</div> SQHA™ كامل</li>
+        <li><div class="check-icon" style="background:#285793">✓</div> قرار: Enter / Test / Skip</li>
+        <li><div class="check-icon" style="background:#285793">✓</div> تقارير مخصصة لاحقاً</li>
+      </ul>
+      <a href="https://store.marnce.com/premium" class="plan-btn plan-btn-emerald">احصل على Premium</a>
+    </div>
+  </div>
+</section>
+
+<!-- INDEX EXPLAINER -->
+<section class="section index-bg" id="index">
+  <div class="section-header fade-in">
+    <div class="section-tag">MARNCE INDEX™</div>
+    <h2 class="section-title">ما هو Marnce Index™؟</h2>
+    <p class="section-desc">نظام تقييم علمي خاص — يحلل كل منتج من 8 زوايا مختلفة ويعطيه رقماً من 0 إلى 100</p>
+  </div>
+  <div class="formula-box fade-in">
+    <div class="formula-text">
+      M = (S×0.22) + (G×0.15) + (C×0.10) + (X×0.18) + (D×0.12) + (V×0.07) + (GEO×0.10) + (SAT×0.06)
+    </div>
+    <span class="formula-highlight">النتيجة: رقم من 0 إلى 100 — كلما ارتفع كلما كان المنتج أقوى فرصة</span>
+  </div>
+  <div class="components-grid">
+    <div class="comp-card fade-in"><div class="comp-letter">S</div><div class="comp-name">Momentum</div><div class="comp-weight">22%</div></div>
+    <div class="comp-card fade-in" style="transition-delay:0.05s"><div class="comp-letter">X</div><div class="comp-name">Source Confidence</div><div class="comp-weight">18%</div></div>
+    <div class="comp-card fade-in" style="transition-delay:0.10s"><div class="comp-letter">G</div><div class="comp-name">Growth</div><div class="comp-weight">15%</div></div>
+    <div class="comp-card fade-in" style="transition-delay:0.15s"><div class="comp-letter">D</div><div class="comp-name">Demand Strength</div><div class="comp-weight">12%</div></div>
+    <div class="comp-card fade-in" style="transition-delay:0.20s"><div class="comp-letter">GEO</div><div class="comp-name">Geographic Spread</div><div class="comp-weight">10%</div></div>
+    <div class="comp-card fade-in" style="transition-delay:0.25s"><div class="comp-letter">C</div><div class="comp-name">Consistency</div><div class="comp-weight">10%</div></div>
+    <div class="comp-card fade-in" style="transition-delay:0.30s"><div class="comp-letter">V</div><div class="comp-name">Volatility Inv.</div><div class="comp-weight">7%</div></div>
+    <div class="comp-card fade-in" style="transition-delay:0.35s"><div class="comp-letter">SAT</div><div class="comp-name">Competition Gap</div><div class="comp-weight">6%</div></div>
+  </div>
+</section>
+
+<!-- CLASSIFICATIONS -->
+<section class="section class-bg" id="classifications">
+  <div class="section-header fade-in">
+    <div class="section-tag">CLASSIFICATIONS</div>
+    <h2 class="section-title">10 تصنيفات تعرّف طبيعة كل منتج</h2>
+    <p class="section-desc">كل منتج يحصل على تصنيف ذكي يساعدك على اتخاذ القرار الصح</p>
+  </div>
+  <div class="class-grid">
+    <div class="class-card fade-in"><span class="class-emoji">🟢</span><div class="class-name">Trend</div><div class="class-desc">صاعد ومستمر</div><div class="class-range">88–100</div></div>
+    <div class="class-card fade-in" style="transition-delay:0.05s"><span class="class-emoji">🔴</span><div class="class-name">Fad</div><div class="class-desc">سينتهي قريباً</div><div class="class-range">78–87</div></div>
+    <div class="class-card fade-in" style="transition-delay:0.10s"><span class="class-emoji">✨</span><div class="class-name">Opportunity</div><div class="class-desc">طلب عالي + منافسة منخفضة</div><div class="class-range">68–77</div></div>
+    <div class="class-card fade-in" style="transition-delay:0.15s"><span class="class-emoji">🌍</span><div class="class-name">Global Rising</div><div class="class-desc">لم يصل السعودية بعد</div><div class="class-range">58–67</div></div>
+    <div class="class-card fade-in" style="transition-delay:0.20s"><span class="class-emoji">🔵</span><div class="class-name">Seasonal</div><div class="class-desc">مرتبط بموسم</div><div class="class-range">48–57</div></div>
+    <div class="class-card fade-in" style="transition-delay:0.25s"><span class="class-emoji">🟡</span><div class="class-name">Fashion</div><div class="class-desc">الفئة ثابتة والتفاصيل تتغير</div><div class="class-range">40–47</div></div>
+    <div class="class-card fade-in" style="transition-delay:0.30s"><span class="class-emoji">🟣</span><div class="class-name">Renewal</div><div class="class-desc">عاد من جديد</div><div class="class-range">30–39</div></div>
+    <div class="class-card fade-in" style="transition-delay:0.35s"><span class="class-emoji">🟠</span><div class="class-name">Gap</div><div class="class-desc">حاجة غير مُغطاة</div><div class="class-range">20–29</div></div>
+    <div class="class-card fade-in" style="transition-delay:0.40s"><span class="class-emoji">⚫</span><div class="class-name">Saturated</div><div class="class-desc">سوق مشبع</div><div class="class-range">10–19</div></div>
+    <div class="class-card fade-in" style="transition-delay:0.45s"><span class="class-emoji">📉</span><div class="class-name">Declining</div><div class="class-desc">في طور الانحدار</div><div class="class-range">0–9</div></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testi-bg">
+  <div class="section-header fade-in">
+    <div class="section-tag">TESTIMONIALS</div>
+    <h2 class="section-title">ماذا يقول المشتركون؟</h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card fade-in">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"وفّر عليّ ساعات من البحث اليدوي كل يوم — التقرير أصبح أول شيء أفتحه في الصباح قبل قهوتي"</div>
+      <div class="testi-author">
+        <div class="testi-avatar">م.أ</div>
+        <div><div class="testi-name">محمد الأحمدي</div><div class="testi-role">تاجر إلكتروني · الرياض</div></div>
+      </div>
+    </div>
+    <div class="testi-card fade-in" style="transition-delay:0.1s">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"Marnce Index™ غيّر طريقة قراراتي الشرائية تماماً — بدلاً من الحدس صار عندي رقم واضح وعلمي"</div>
+      <div class="testi-author">
+        <div class="testi-avatar">س.ع</div>
+        <div><div class="testi-name">سارة العمري</div><div class="testi-role">صاحبة متجر · جدة</div></div>
+      </div>
+    </div>
+    <div class="testi-card fade-in" style="transition-delay:0.2s">
+      <div class="testi-stars">★★★★☆</div>
+      <div class="testi-text">"أفضل استثمار في أدوات التجارة الإلكترونية — اكتشفت منتجين رابحين في الأسبوع الأول من الاشتراك"</div>
+      <div class="testi-author">
+        <div class="testi-avatar">ف.ز</div>
+        <div><div class="testi-name">فهد الزهراني</div><div class="testi-role">دروبشيبر · الدمام</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq-bg" id="faq">
+  <div class="section-header fade-in">
+    <div class="section-tag">FAQ</div>
+    <h2 class="section-title">أسئلة يسألها المشتركون</h2>
+  </div>
+  <div class="faq-inner">
+    <div class="faq-item fade-in">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        كيف يتم احتساب Marnce Index™؟
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">يُحسب من 8 مؤشرات موزونة تشمل Momentum وSource Confidence وGrowth وDemand Strength وغيرها — كل مؤشر مأخوذ من مصادر بيانات حقيقية يومية. النتيجة رقم من 0 إلى 100 يعكس قوة المنتج في السوق.</div>
+    </div>
+    <div class="faq-item fade-in" style="transition-delay:0.05s">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        متى يصلني التقرير؟
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">يصل تقريرك يومياً الساعة 6 صباحاً تقريباً على واتساب وإيميلك — قبل بداية يوم العمل مباشرة حتى تبدأ يومك بمعلومات حديثة.</div>
+    </div>
+    <div class="faq-item fade-in" style="transition-delay:0.10s">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        هل التقرير مخصص للسوق السعودي؟
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">نعم — المنصة مصممة أساساً للسوق السعودي مع تغطية واسعة للمنتجات العالمية الصاعدة قبل وصولها للمملكة، مما يتيح لك الدخول مبكراً.</div>
+    </div>
+    <div class="faq-item fade-in" style="transition-delay:0.15s">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        ما الفرق بين Custom وPremium؟
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">Premium يضيف نظام SQHA™ الذي يعطيك قرار تجاري مباشر: Enter Now / Test Small / Monitor / Skip — يجمع بين التحليل الكمي والنوعي في قرار واحد واضح. مخصص للمحترفين والشركات.</div>
+    </div>
+    <div class="faq-item fade-in" style="transition-delay:0.20s">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        هل يمكن إلغاء الاشتراك في أي وقت؟
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">نعم — يمكنك إلغاء اشتراكك في أي وقت بدون رسوم إضافية. الإلغاء يسري من بداية الدورة القادمة.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-final">
+  <div class="cta-final-bg"></div>
+  <h2>ابدأ اليوم — التقرير الأول مجاني</h2>
+  <p>انضم للتجار الذين يتخذون قراراتهم بناءً على بيانات حقيقية</p>
+  <div class="hero-btns">
+    <a href="https://store.marnce.com" class="btn-primary">ابدأ تجربتك المجانية</a>
+    <a href="mailto:hello@marnce.com" class="btn-outline">تواصل معنا</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">MARNCE</div>
+      <div class="footer-brand-sub">MARKET INTELLIGENCE</div>
+      <div class="footer-brand-desc">منصة ذكاء السوق — تقارير يومية مؤتمتة بالكامل للسوق السعودي والعالمي. مبنية على بيانات حقيقية من 15 مصدر.</div>
+    </div>
+    <div class="footer-col">
+      <h4>PLATFORM</h4>
+      <a href="#how">كيف يعمل</a>
+      <a href="#index">Marnce Index™</a>
+      <a href="#classifications">التصنيفات</a>
+      <a href="#sample">نموذج التقرير</a>
+    </div>
+    <div class="footer-col">
+      <h4>SUBSCRIBE</h4>
+      <a href="https://store.marnce.com/free">Free</a>
+      <a href="https://store.marnce.com/custom">Custom</a>
+      <a href="https://store.marnce.com/premium">Premium</a>
+    </div>
+    <div class="footer-col">
+      <h4>CONTACT</h4>
+      <a href="https://wa.me/966500000000">واتساب</a>
+      <a href="mailto:hello@marnce.com">إيميل</a>
+      <a href="#">سياسة الخصوصية</a>
+      <a href="#">الشروط والأحكام</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Marnce Market Intelligence · All rights reserved</div>
+    <div class="footer-socials">
+      <a class="social-icon" href="#">in</a>
+      <a class="social-icon" href="#">𝕏</a>
+      <a class="social-icon" href="#">▶</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// FAQ Toggle
+function toggleFaq(el) {
+  const item = el.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// Fade In on Scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  if (window.scrollY > 50) {
+    nav.style.borderBottomColor = 'rgba(40,87,147,0.5)';
+  } else {
+    nav.style.borderBottomColor = 'rgba(40,87,147,0.3)';
+  }
+});
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    if (id === '#') return;
+    const el = document.querySelector(id);
+    if (el) {
+      e.preventDefault();
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
